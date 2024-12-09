@@ -40,49 +40,50 @@ const components: { title: string; href: string }[] = [
 
 export default function Header() {
   return (
-    <NavigationMenu className="rounded border bg-black ">
+      <div className="flex justify-center">
+    <NavigationMenu className=" bg-black">
       <NavigationMenuList>
-        <NavigationMenuItem className={cn("bg-black  z-10", styles.navItem)}>
+        <NavigationMenuItem className={cn("bg-black z-10", styles.navItem)}>
           <Link href="/features" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-black text-white")}>
               Features
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/developers" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-black text-white")}>
               Developers
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/pricing" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-black text-white")}>
               Pricing
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/changelog" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-black text-white")}>
               Changelog
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/docs" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-black text-white")}>
               Documentation
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        <Button
-          className={`rounded-lg text-sm font-medium border-white w-24 h-8 py-2 px-3 shadow-[0px_0px_12px_#8c45ff] ${styles.btn}`}
-        >
-          Join waitlist
-        </Button>
+<Button className="bg-gradient-to-b from-[#190d2e] to-[#4a208a]">
+  Join waitlist
+  </Button> 
+          
       </NavigationMenuList>
     </NavigationMenu>
+    </div>
   );
 }
