@@ -41,8 +41,8 @@ const components: { title: string; href: string }[] = [
 export default function Header() {
   return (
       <div className="flex justify-center">
-    <NavigationMenu className=" bg-black">
-      <NavigationMenuList>
+    <NavigationMenu className=" bg-black ">
+      <NavigationMenuList className="sm:hidden">
         <NavigationMenuItem className={cn("bg-black z-10", styles.navItem)}>
           <Link href="/features" legacyBehavior passHref>
             <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-black text-white")}>
