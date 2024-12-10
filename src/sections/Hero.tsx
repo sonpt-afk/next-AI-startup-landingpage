@@ -32,7 +32,7 @@ export const Hero = () => {
       </p>
       <div className="flex justify-center mt-5">
 
-      <Button className="bg-gradient-to-b from-[#190d2e] to-[#4a208a] hover:from-[#ff7e5f] hover:to-[#feb47b] ">
+      <Button className="bg-gradient-to-b shadow-[0px_0px_12px_#8c45ff] from-[#190d2e] to-[#4a208a] hover:from-[#ff7e5f] hover:to-[#feb47b] ">
   Join waitlist
 </Button>
       </div>
