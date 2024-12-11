@@ -33,13 +33,13 @@ export const Features = () => {
   return <section className="py-20">
     <div className="container">
       <h2 className="text-5xl font-medium text-center tracking-lighter">Elevate your SEO efforts.</h2>
-      <p className="text-white/70 text-lg tracking-tight text-center mt-5">From small startups to large enterprises, our AI-driven tool has revolutionized the way businesses approach SEO.</p>
-      <div className="mt-10">
+      <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto tracking-tight text-center mt-5">From small startups to large enterprises, our AI-driven tool has revolutionized the way businesses approach SEO.</p>
+      <div className="mt-10 flex flex-col lg:flex-row gap-3">
       {tabs.map(tab => {
         return (
-          <div key={tab.title} className="border mt-2.5 border-white/15 flex p-2.5 rounded-xl gap-2.5 h-[68px] items-center">
+          <div key={tab.title} className="border mt-2.5 border-white/15 flex p-2.5 rounded-xl gap-2.5 h-[68px] items-center lg:flex-1">
             <div className="border rounded border-white/15 p-3">
-            <DotLottiePlayer src={tab.icon} className="h-5 w-5  " autoplay />
+             <DotLottiePlayer src={tab.icon} className="h-5 w-5" autoplay />
             </div>
             <div className="">{tab.title}</div>
             {tab.isNew && (
