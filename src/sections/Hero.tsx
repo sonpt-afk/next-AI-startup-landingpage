@@ -1,9 +1,23 @@
+'use client';
 import { Button } from "@/components/ui/button";
 import startBg from "@/assets/stars.png";
+import { motion ,useScroll, useMotionValueEvent, useTransform} from "framer-motion";
+import { useRef } from "react";
 export const Hero = () => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end','end start']
+  })
+
+  const backgroundPositionY = useTransform(scrollYProgress, [0, 1], [-300,300]); 
+
   return (
-  <section className="h-[492px] md:h-[800px] flex items-center overflow-hidden relative [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]"
-  style={{ backgroundImage: `url(${startBg.src})` }}
+  <motion.section ref={sectionRef} className="h-[492px] md:h-[800px] flex items-center overflow-hidden relative [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]"
+  style={{ 
+    backgroundImage: `url(${startBg.src})` ,
+    backgroundPositionY
+  }}
   >
     <div className="inset-0 absolute bg-[radial-gradient(75%_75%_at_center_center,rgb(140,69,255,.5)_15%,rgb(14,0,36,.5)_78%,transparent)]"></div>
     {/* Start planer */}
@@ -11,17 +25,42 @@ export const Hero = () => {
     </div>
     {/* End planer */}
     {/* start ring 1 */}
-<div className="absolute h-[344px] w-[344px] md:h-[580px] md:w-[580px] border border-white/20 opacity-20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<motion.div 
+style={{
+  translateY: '-50%',
+  translateX: '-50%'
+}}
+animate={{
+  rotate: '1turn'
+}}
+transition={{
+  duration: 30,
+  repeat: Infinity,
+  ease: 'linear'
+}}
+className="absolute h-[344px] w-[344px] md:h-[580px] md:w-[580px] border border-white/20 opacity-20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
     <div className="absolute h-2 w-2 left-0 bg-white rounded-full top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
     <div className="absolute h-2 w-2 left-1/2 bg-white rounded-full top-8 -translate-x-1/2 -translate-y-1/2"></div>
     <div className="absolute h-5 w-5 left-full border border-white rounded-full top-1/2 -translate-x-1/2 -translate-y-1/2">
     <div className="h-2 w-2 bg-white rounded-full"></div></div>
 
-</div>
+</motion.div>
     {/* end ring 1 */}
     {/* start ring 2 */}
-<div className="absolute h-[444px] w-[444px] md:h-[780px] md:w-[780px] rounded-full border border-white/20 opacity-20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-</div>
+<motion.div
+style={{
+  translateY: '-50%',
+  translateX: '-50%'
+}}
+animate={{
+  rotate: '-1turn'
+}}
+transition={{
+  duration: 30,
+  repeat: Infinity,
+  ease: 'linear'
+}} className="absolute h-[444px] w-[444px] md:h-[780px] md:w-[780px] rounded-full border border-white/20 opacity-20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+</motion.div>
 
     {/* end ring 2 */}
 
@@ -37,5 +76,5 @@ export const Hero = () => {
 </Button>
       </div>
     </div>
-  </section>);
+  </motion.section>);
 };
