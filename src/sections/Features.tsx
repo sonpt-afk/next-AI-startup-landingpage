@@ -77,6 +77,8 @@ const FeatureTab = (props: (typeof tabs)[number] & ComponentPropsWithoutRef<'div
     if (dotLottieRef.current === null) return;
     dotLottieRef.current.seek(0);
     dotLottieRef.current.play();
+
+
   };
 
   return (
@@ -84,16 +86,18 @@ const FeatureTab = (props: (typeof tabs)[number] & ComponentPropsWithoutRef<'div
       ref={tabRef}
       onMouseEnter={handleTabHover}
       key={props?.title}
-      className="border mt-2.5 border-white/15 flex p-2.5 rounded-xl gap-2.5 h-[68px] items-center lg:flex-1"
+      className="border mt-2.5border-[#8c44ff] flex p-2.5 rounded-xl gap-2.5 h-[68px] items-center lg:flex-1 hover:cursor-pointer"
       onClick={props.onClick}
+      
     >
-      {props.selected && (
+      {/* {props.selected && (
       <motion.div style={{
         maskImage,
       }} className="absolute inset-0 border border-[#8c44ff] -m-px rounded-xl ">
+        
       </motion.div>
 
-      )}
+      )} */}
 
       <div className="border rounded border-white/15 p-3">
         <DotLottiePlayer
@@ -135,8 +139,8 @@ export const Features = () => {
       animateOptions
     )
 
-    animate(backgroundPositionX, [backgroundPositionX.get(),tabs[index].backgroundPositionX],      animateOptions)
-    animate(backgroundPositionY, [backgroundPositionY.get(),tabs[index].backgroundPositionY],      animateOptions)
+    animate(backgroundPositionX, [backgroundPositionX.get(),tabs[index].backgroundPositionX],animateOptions)
+    animate(backgroundPositionY, [backgroundPositionY.get(),tabs[index].backgroundPositionY],animateOptions)
   
   }
 
@@ -169,7 +173,9 @@ export const Features = () => {
       backgroundSize,
       backgroundImage: `url(${productImage.src})`,
     }}
-  />
+  >
+  </motion.div>
+
 </div>
         <Image src={productImage} alt="Product image"></Image>
       </div>

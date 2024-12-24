@@ -6,11 +6,12 @@ import MenuIcon from "@/assets/icon-menu.svg";
 
 export default function Header() {
   return (
-    <header className="py-4 border-b border-white/15 md:border-none sticky top-0 z-10 backdrop-blur md:backdrop-blur-none">
-      <div className="absolute inset-0 backdrop-blur -z-10 md:hidden"></div>
-      <div className="container">
-        <div className="flex justify-between items-center md:border border-white/15 md:p-2.5 rounded-xl max-w-2xl mx-auto relative">
-        <div className="absolute inset-0 backdrop-blur -z-10 hidden md:block">
+    <header className="py-4 border-b border-white/15 md:border-none sticky top-0 z-10 backdrop-blur-md bg-black/20">
+    <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent -z-10"></div>
+    <div className="container">
+      <div className="flex justify-between items-center md:border border-white/15 md:p-2.5 rounded-xl max-w-2xl mx-auto relative">
+        <div className="absolute inset-0 backdrop-blur-md bg-black/10 -z-10 rounded-xl">
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-blue-500/5"></div>
         </div>
           
           <div>

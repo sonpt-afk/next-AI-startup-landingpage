@@ -67,13 +67,13 @@ transition={{
     <div className="container relative mt-16">
       <h1 className="text-6xl sm:text-[100px] md:text-[168px] md:leading-none bg-white	font-semibold tracking-tighter bg-[radial-gradient(100%_100%_at_top_left,white,white,rgb(74,32,138,.5))] text-transparent bg-clip-text text-center">AI SEO</h1>
       <p className="text-lg md:text-xl text-white/70 mt-5 text-center max-w-xl mx-auto">
-      Elevate your site's visibility effortlessly with AI, where smart technology meets user-friendly SEO tools.
+      Elevate your site 's visibility effortlessly with AI, where smart technology meets user-friendly SEO tools.
       </p>
       <div className="flex justify-center mt-5">
 
-      <Button className="bg-gradient-to-b shadow-[0px_0px_12px_#8c45ff] from-[#190d2e] to-[#4a208a] hover:from-[#ff7e5f] hover:to-[#feb47b] ">
-  Join waitlist
-</Button>
+      <button className="relative py-2 px-2 rounded-lg font-medium text-sm bg-gradient-to-b from-[#190d2e] to-[#4A208A] shadow-[0px_0px_12px_#8c45ff] ">
+      Join waitlist
+</button>
       </div>
     </div>
   </motion.section>);
