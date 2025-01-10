@@ -5,7 +5,13 @@ import {
 } from "@dotlottie/react-player";
 import Image from "next/image";
 import productImage from "@/assets/product-image.png";
-import { ComponentPropsWithoutRef, use, useEffect, useRef, useState } from "react";
+import {
+  ComponentPropsWithoutRef,
+  use,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import {
   animate,
   motion,
@@ -42,7 +48,10 @@ const tabs = [
   },
 ];
 
-const FeatureTab = (props: (typeof tabs)[number] & ComponentPropsWithoutRef<'div'> & {selected: boolean}) => {
+const FeatureTab = (
+  props: (typeof tabs)[number] &
+    ComponentPropsWithoutRef<"div"> & { selected: boolean }
+) => {
   const dotLottieRef = useRef<DotLottieCommonPlayer>(null);
   const tabRef = useRef<HTMLDivElement>(null);
   const xPercentage = useMotionValue(100);
@@ -71,14 +80,12 @@ const FeatureTab = (props: (typeof tabs)[number] & ComponentPropsWithoutRef<'div
     };
     animate(xPercentage, [0, 100, 100, 0, 0], options);
     animate(yPercentage, [0, 0, 100, 100, 0], options);
-  },[props.selected]);
+  }, [props.selected, xPercentage, yPercentage]);
 
   const handleTabHover = () => {
     if (dotLottieRef.current === null) return;
     dotLottieRef.current.seek(0);
     dotLottieRef.current.play();
-
-
   };
 
   return (
@@ -88,7 +95,6 @@ const FeatureTab = (props: (typeof tabs)[number] & ComponentPropsWithoutRef<'div
       key={props?.title}
       className="border mt-2.5border-[#8c44ff] flex p-2.5 rounded-xl gap-2.5 h-[68px] items-center lg:flex-1 hover:cursor-pointer"
       onClick={props.onClick}
-      
     >
       {/* {props.selected && (
       <motion.div style={{
@@ -126,23 +132,31 @@ export const Features = () => {
   const backgroundPosition = useMotionTemplate`${backgroundPositionX}% ${backgroundPositionY}%`;
   const backgroundSize = useMotionTemplate`${backgroundSizeX}% auto`;
 
-  
-  const handleSelectTab = (index:number) => {
+  const handleSelectTab = (index: number) => {
     setSelectedTab(index);
 
-    const animateOptions:ValueAnimationTransition = {
-      duration:2,
-      ease:"easeInOut"
-    }
-    
-    animate(backgroundSizeX, [backgroundSizeX.get(),100,tabs[index].backgroundSizeX],
-      animateOptions
-    )
+    const animateOptions: ValueAnimationTransition = {
+      duration: 2,
+      ease: "easeInOut",
+    };
 
-    animate(backgroundPositionX, [backgroundPositionX.get(),tabs[index].backgroundPositionX],animateOptions)
-    animate(backgroundPositionY, [backgroundPositionY.get(),tabs[index].backgroundPositionY],animateOptions)
-  
-  }
+    animate(
+      backgroundSizeX,
+      [backgroundSizeX.get(), 100, tabs[index].backgroundSizeX],
+      animateOptions
+    );
+
+    animate(
+      backgroundPositionX,
+      [backgroundPositionX.get(), tabs[index].backgroundPositionX],
+      animateOptions
+    );
+    animate(
+      backgroundPositionY,
+      [backgroundPositionY.get(), tabs[index].backgroundPositionY],
+      animateOptions
+    );
+  };
 
   return (
     <section className="py-20">
@@ -161,22 +175,19 @@ export const Features = () => {
               onClick={() => handleSelectTab(tabIndex)}
               key={tab.title}
               selected={selectedTab === tabIndex}
-              
             />
           ))}
         </div>
         <div className="border border-white/20 p-2.5 rounded-xl mt-3">
-  <motion.div 
-    className="aspect-video bg-cover border border-white/20"
-    style={{
-      backgroundPosition,
-      backgroundSize,
-      backgroundImage: `url(${productImage.src})`,
-    }}
-  >
-  </motion.div>
-
-</div>
+          <motion.div
+            className="aspect-video bg-cover border border-white/20"
+            style={{
+              backgroundPosition,
+              backgroundSize,
+              backgroundImage: `url(${productImage.src})`,
+            }}
+          ></motion.div>
+        </div>
         <Image src={productImage} alt="Product image"></Image>
       </div>
     </section>
