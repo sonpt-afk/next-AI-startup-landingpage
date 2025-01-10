@@ -62,7 +62,10 @@ const FeatureTab = (
     if (!tabRef.current || !props.selected) return;
 
     const animateGradient = () => {
-      const { height, width } = tabRef.current?.getBoundingClientRect();
+      const rect = tabRef.current?.getBoundingClientRect();
+      if (!rect) return;
+
+      const { height, width } = rect;
       const circumference = 2 * height + 2 * width;
       const times = [
         0,
