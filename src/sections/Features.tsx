@@ -60,26 +60,31 @@ const FeatureTab = (
   const maskImage = useMotionTemplate`radial-gradient(80px 80px at ${xPercentage}% ${yPercentage}% , black, transparent)`;
   useEffect(() => {
     if (!tabRef.current || !props.selected) return;
+
+    const animateGradient = () => {
+      const { height, width } = tabRef.current?.getBoundingClientRect();
+      const circumference = 2 * height + 2 * width;
+      const times = [
+        0,
+        width / circumference,
+        (width + height) / circumference,
+        (2 * width + height) / circumference,
+        1,
+      ];
+      const options: ValueAnimationTransition = {
+        times,
+        duration: 4,
+        ease: "linear",
+        repeat: Infinity,
+        repeatType: "loop",
+      };
+      animate(xPercentage, [0, 100, 100, 0, 0], options);
+      animate(yPercentage, [0, 0, 100, 100, 0], options);
+    };
+
     xPercentage.set(0);
     yPercentage.set(0);
-    const { height, width } = tabRef.current?.getBoundingClientRect();
-    const circumference = 2 * height + 2 * width;
-    const times = [
-      0,
-      width / circumference,
-      (width + height) / circumference,
-      (2 * width + height) / circumference,
-      1,
-    ];
-    const options: ValueAnimationTransition = {
-      times,
-      duration: 4,
-      ease: "linear",
-      repeat: Infinity,
-      repeatType: "loop",
-    };
-    animate(xPercentage, [0, 100, 100, 0, 0], options);
-    animate(yPercentage, [0, 0, 100, 100, 0], options);
+    animateGradient();
   }, [props.selected, xPercentage, yPercentage]);
 
   const handleTabHover = () => {
